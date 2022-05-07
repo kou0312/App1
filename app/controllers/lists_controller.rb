@@ -3,12 +3,19 @@ class ListsController < ApplicationController
     @list = List.new
   end
 
-  def index
+  def create
+    list = List.new(list_params)
+    list.save
+    redirect_to'/top'
   end
 
-  def show
-  end
 
-  def edit
+
+
+
+  #ストロングパラメータ、一番下に書く
+  private
+  def list_params
+    params.require(:list).permit(:title, :body)
   end
 end
